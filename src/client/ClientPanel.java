@@ -29,6 +29,7 @@ public class ClientPanel extends Parent implements Observer {
 	Text connected;
 	TextArea textMembers;
 	Message receivedMessage = new Message("");
+	Button disconnect;
 	
 	/**
 	 * Constructor of all interface and add button event.
@@ -90,6 +91,21 @@ public class ClientPanel extends Parent implements Observer {
 		this.textMembers.setEditable(false);
 		
 		this.getChildren().add(textMembers);
+		
+		
+		this.disconnect = new Button();
+		this.disconnect.setLayoutX(470);
+		this.disconnect.setLayoutY(410);
+		this.disconnect.setPrefHeight(20);
+		this.disconnect.setPrefWidth(100);
+		this.disconnect.setText("Déconnection");
+		this.getChildren().add(disconnect);
+		
+		disconnect.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				System.exit(0);
+			}
+		});
 		
 		clearBtn.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
@@ -180,11 +196,5 @@ public class ClientPanel extends Parent implements Observer {
     			textMembers.appendText(newText + "\n");
             }
 		});
-		
-		
-		/*Platform.runLater(()->{			
-			textMembers.clear();
-			textMembers.appendText(newText + "\n");
-		});*/
 	}
 }
